@@ -5,7 +5,30 @@ import { App } from './App';
 
 createServer({
   models: {
-    transactions: Model,
+    transaction: Model,
+  },
+
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
+        {
+          id: 1,
+          title: 'Criação de Website',
+          type: 'deposit',
+          category: 'Desenvolvimento Web',
+          amount: 6000,
+          createdAt: new Date('2021-02-12 09:00:00'),
+        },
+        {
+          id: 2,
+          title: 'Aluguel',
+          type: 'withdraw',
+          category: 'Finanças',
+          amount: 1500,
+          createdAt: new Date('2021-02-05 11:00:00'),
+        }
+      ],
+    })
   },
 
   routes() {
